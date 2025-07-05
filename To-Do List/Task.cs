@@ -3,31 +3,54 @@ namespace To_Do_List;
 public class Task
 {
     private string taskName;
-    private string dueDate;
+    private DateTime dueDate;
     private int priority;
     private bool isTaskDone;
 
-    public Task(string taskName, string dueDate, int priority = 4)
+    public Task(string taskName, DateTime dueDate, int priority = 4)
     {
-        this.taskName = taskName;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        isTaskDone = false;
+        TaskName = taskName;
+        DueDate = dueDate;
+        Priority = priority;
+        IsTaskDone = false;
     }
 
-    public string GetTaskName
+    public string TaskName
     {
         get { return taskName; }
+        set
+        {
+            if (value == null)
+            {
+                taskName = "";
+            }
+            else
+            {
+                taskName = value;
+            }
+        }
     }
-    public string GetDueDate
+    public DateTime DueDate
     {
         get { return dueDate; }
+        set { dueDate = value; }
     }
-    public int GetPriority
+    public int Priority
     {
         get { return priority; }
+        set
+        {
+            if (value < 1 || value > 4)
+            {
+                priority = 4;
+            }
+            else
+            {
+                priority = value;
+            }
+        }
     }
-    public bool TaskStatus
+    public bool IsTaskDone
     {
         get { return isTaskDone; }
         set { isTaskDone = value; }
